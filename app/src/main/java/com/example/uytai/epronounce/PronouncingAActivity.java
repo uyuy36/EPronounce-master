@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.TextInputLayout;
@@ -53,6 +54,9 @@ public class PronouncingAActivity extends AppCompatActivity {
     int num1, num2;
     int result=0;
 
+    //am thanh khi doc dung
+    MediaPlayer mediaPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +70,14 @@ public class PronouncingAActivity extends AppCompatActivity {
         sql();
         //
         choosetime();
+        audiowhencorrect();
+    }
+
+    private void audiowhencorrect() {
+        mediaPlayer = MediaPlayer.create(PronouncingAActivity.this, R.raw.correct);
+        mediaPlayer.start();
+        //set time for audio
+
     }
 
     private void choosetime() {
